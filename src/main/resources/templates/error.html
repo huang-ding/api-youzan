@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>核销</title>
+  <link rel="stylesheet" href="/css/weui/weui.css">
+  <link rel="stylesheet" href="/css/weui/example.css">
+</head>
+<body>
+<div class="page msg_warn js_show">
+  <div class="weui-msg">
+    <div class="weui-msg__icon-area"><i class="weui-icon-warn weui-icon_msg"></i></div>
+    <div class="weui-msg__text-area">
+      <h2 class="weui-msg__title">操作失败</h2>
+      <p class="weui-msg__desc" th:text="${errorMsg}"></p>
+    </div>
+    <div class="weui-msg__opr-area">
+      <p class="weui-btn-area">
+        <a href="javascript:history.back();" class="weui-btn weui-btn_primary">继续核销</a>
+      </p>
+    </div>
+    <div class="weui-msg__extra-area">
+      <div class="weui-footer">
+        <p class="weui-footer__text">Copyright © 2018-2020 西美</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

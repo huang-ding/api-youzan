@@ -1,0 +1,42 @@
+spring:
+  redis:
+    host: redis
+    port: 6379
+    database: 1
+    password: ywy123456
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql:3306/prune?useUnicode=true&characterEncoding=UTF8
+    username: root
+    password: 123456
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: validate
+    show-sql: true
+
+server:
+  port: 8811
+
+
+
+swagger:
+  host: 47.99.244.2:${server.port}
+
+#sql 打印
+logging:
+  level:
+    com.saopay.apiyouzan.data.dao.mapper: INFO
+    root: INFO
+    org.springframework.web: INFO
+
+
+
+
+
+
+
+
+

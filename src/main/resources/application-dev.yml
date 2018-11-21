@@ -1,0 +1,48 @@
+spring:
+  redis:
+    host: 127.0.0.1
+    password:
+    port: 6379
+    database: 0
+
+  datasource:
+    driver-class-name: net.sf.log4jdbc.DriverSpy
+    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/prune?useUnicode=true&characterEncoding=UTF8
+    username: root
+    password: 123456
+
+  #validate               加载hibernate时，验证创建数据库表结构
+  #create                  每次加载hibernate，重新创建数据库表结构，这就是导致数据库表数据丢失的原因。
+  #create-drop        加载hibernate时创建，退出是删除表结构
+  #update                 加载hibernate自动更新数据库结构
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: validate
+    show-sql: true
+
+
+server:
+  port: 80
+
+
+
+swagger:
+  host: 127.0.0.1:${server.port}
+
+#sql 打印
+logging:
+  level:
+    com.saopay.apiyouzan.data.dao.mapper: debug
+    root: INFO
+    org.springframework.web: DEBUG
+
+
+
+
+
+
+
+
+
