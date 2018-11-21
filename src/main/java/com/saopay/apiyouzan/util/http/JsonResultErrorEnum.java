@@ -23,6 +23,8 @@ public enum JsonResultErrorEnum {
     YZ_TAG_NULL("无该标签", "70001"),
     YZ_USER_NULL("无该用户", "7002"),
     YZ_VIRTUAL_CODE_ERROR("核销出错", "5000"),
+    YZ_VIRTUAL_CODE_NULL("该码无法使用此功能核销", "5001"),
+
     ;
 
     private String msg;

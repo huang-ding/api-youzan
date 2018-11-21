@@ -1,6 +1,7 @@
 package com.saopay.apiyouzan.service;
 
 import static com.saopay.apiyouzan.util.http.JsonResultErrorEnum.YZ_VIRTUAL_CODE_ERROR;
+import static com.saopay.apiyouzan.util.http.JsonResultErrorEnum.YZ_VIRTUAL_CODE_NULL;
 
 import com.saopay.apiyouzan.data.dao.jpa.AdminJpaDao;
 import com.saopay.apiyouzan.data.dao.jpa.VirtualCodeLogJpaDao;
@@ -9,6 +10,7 @@ import com.saopay.apiyouzan.data.pojo.po.Admin;
 import com.saopay.apiyouzan.data.pojo.po.VirtualCodeLog;
 import com.saopay.apiyouzan.enums.RedisKeyEnum;
 import com.saopay.apiyouzan.redis.RedisUtil;
+import com.saopay.apiyouzan.util.DateUtil;
 import com.saopay.apiyouzan.util.http.JsonResult;
 import com.saopay.apiyouzan.util.http.JsonResultErrorEnum;
 import com.youzan.open.sdk.exception.KDTException;
@@ -77,6 +79,8 @@ public class OrderService extends BaseService {
             } else if (code.length() == 12) {
                 //TODO 目前12位的为优惠券或者优惠码
                 flag = verifyCode(code);
+            } else {
+                return JsonResult.error(YZ_VIRTUAL_CODE_NULL);
             }
         } catch (KDTException e) {
             e.getMessage();
@@ -248,5 +252,11 @@ public class OrderService extends BaseService {
             orderDetails.add(orderDetail);
         }
         return orderDetails;
+    }
+
+    public static void main(String[] args) {
+
+        String s = DateUtil.nowDateTimeString();
+        System.out.println(s);
     }
 }

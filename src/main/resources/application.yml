@@ -1,7 +1,7 @@
 spring:
   profiles:
     #设置配置文件
-    active: @profileActive@
+    active: @project@
   application:
     name: api-youzan
   #设置jackson格式
@@ -33,7 +33,7 @@ spring:
         max-idle: 100
         max-wait: 6ms
 
-environment: @profileActive@
+environment: @project@
 
 mybatis:
   type-aliases-package: com.saopay.apiyouzan.data.pojo.po

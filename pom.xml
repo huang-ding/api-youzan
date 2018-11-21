@@ -34,13 +34,14 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
-        <profileActive>dev</profileActive>
+        <project>dev</project>
       </properties>
     </profile>
     <profile>
       <id>prod</id>
       <properties>
-        <profileActive>prod</profileActive>
+        <project>prod</project>
+        <!--<profileActive>prod</profileActive>-->
       </properties>
     </profile>
   </profiles>
@@ -269,6 +270,18 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <!-- 第三方jar包 jar打包方式-->
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <includeSystemScope>true</includeSystemScope>
+        </configuration>
+        <!--end-->
       </plugin>
       <plugin>
         <groupId>com.spotify</groupId>
@@ -290,22 +303,6 @@
         </configuration>
       </plugin>
     </plugins>
-    <resources>
-      <!-- <resource>
-      <directory>${project.basedir}/src/main/webapp/WEB-INF/lib</directory>
-      <targetPath>/BOOT-INF/lib/</targetPath>
-      <includes>
-      <include>*/.jar</include>
-      </includes>
-      </resource> -->
-      <resource>
-        <directory>${project.basedir}/src/lib</directory>
-        <targetPath>BOOT-INF/lib/</targetPath>
-        <includes>
-          <include>**/*.jar</include>
-        </includes>
-      </resource>
-    </resources>
   </build>
 
 
