@@ -212,22 +212,15 @@
 
     <!-- 有赞sdk-->
     <dependency>
-      <groupId>com.youzhan</groupId>
+      <groupId>com.youzan.api</groupId>
       <artifactId>sdk</artifactId>
       <version>2.0.4</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/src/main/resources/lib/open-sdk-java-2.0.4-SNAPSHOT.jar
-      </systemPath>
     </dependency>
 
     <dependency>
-      <groupId>com.youzhan</groupId>
+      <groupId>com.youzan.api</groupId>
       <artifactId>sdk-sources</artifactId>
       <version>2.0.4</version>
-      <scope>system</scope>
-      <systemPath>
-        ${project.basedir}/src/main/resources/lib/open-sdk-java-2.0.4-SNAPSHOT-sources.jar
-      </systemPath>
     </dependency>
     <!--end-->
     <!-- 百度云sdk-->
@@ -235,17 +228,22 @@
       <groupId>com.baidu.aip</groupId>
       <artifactId>sdk</artifactId>
       <version>4.2.0</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/src/main/resources/lib/aip-java-sdk-4.2.0.jar
-      </systemPath>
     </dependency>
+    <!--<dependency>-->
+      <!--<groupId>com.baidu.aip</groupId>-->
+      <!--<artifactId>sdk</artifactId>-->
+      <!--<version>4.2.0</version>-->
+      <!--<scope>system</scope>-->
+      <!--<systemPath>${project.basedir}/src/main/resources/lib/aip-java-sdk-4.2.0.jar-->
+      <!--</systemPath>-->
+    <!--</dependency>-->
     <dependency>
       <groupId>com.baidu.aip</groupId>
       <artifactId>json</artifactId>
       <version>20160810</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/src/main/resources/lib/json-20160810.jar
-      </systemPath>
+      <!--<scope>system</scope>-->
+      <!--<systemPath>${project.basedir}/src/main/resources/lib/json-20160810.jar-->
+      <!--</systemPath>-->
     </dependency>
     <dependency>
       <groupId>com.baidu.aip</groupId>
@@ -263,6 +261,8 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+
+
   </dependencies>
 
   <build>
