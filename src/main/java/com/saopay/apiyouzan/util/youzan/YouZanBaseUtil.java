@@ -115,4 +115,16 @@ public class YouZanBaseUtil {
     public void setKdtId(String kdtId) {
         YouZanBaseUtil.kdtId = kdtId;
     }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public String getClientSecret() {
+        return clientSecret;
+    }
+
+    public String getKdtId() {
+        return kdtId;
+    }
 }

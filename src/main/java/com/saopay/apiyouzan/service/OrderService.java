@@ -83,7 +83,6 @@ public class OrderService extends BaseService {
                 return JsonResult.error(YZ_VIRTUAL_CODE_NULL);
             }
         } catch (KDTException e) {
-            e.getMessage();
             if (e.getMessage().indexOf("ErrorResponse") != -1) {
                 String errorResponse = e.getMessage().split("ErrorResponse")[1];
                 String msg = errorResponse.split(",")[1].split("'")[1];

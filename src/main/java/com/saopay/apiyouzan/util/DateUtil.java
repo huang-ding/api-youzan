@@ -104,5 +104,13 @@ public class DateUtil {
         return Date.from(instant);
     }
 
+    public static boolean compareTo(LocalDateTime dateTime, LocalDateTime other) {
+        int i = dateTime.compareTo(other);
+        if (i > 0) {
+            return true;
+        }
+        return false;
+    }
+
 
 }

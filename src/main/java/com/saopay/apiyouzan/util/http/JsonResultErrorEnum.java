@@ -25,6 +25,17 @@ public enum JsonResultErrorEnum {
     YZ_VIRTUAL_CODE_ERROR("核销出错", "5000"),
     YZ_VIRTUAL_CODE_NULL("该码无法使用此功能核销", "5001"),
 
+    /**
+     * user
+     */
+    USER_CONSIST("该用户已存在", "9000"),
+    USER_NOT_CONSIST("该用户不存在", "9001"),
+
+    /**
+     * activity
+     */
+    ACTIVITY_ALREADY_INVOLVED("该活动已参与", "10000"),
+
     ;
 
     private String msg;

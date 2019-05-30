@@ -52,7 +52,7 @@ public class OkHttpUtil {
     }
 
 
-    private static void getQuer(Map<String, String> queries, StringBuffer sb) {
+    public static void getQuer(Map<String, String> queries, StringBuffer sb) {
         if (queries != null && queries.keySet().size() > 0) {
             boolean firstFlag = true;
             Iterator iterator = queries.entrySet().iterator();

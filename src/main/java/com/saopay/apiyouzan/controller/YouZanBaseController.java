@@ -22,16 +22,5 @@ public class YouZanBaseController {
     @Autowired
     protected YouZanBaseUtil youZanBaseUtil;
 
-    /**
-     * 获取excel模板
-     */
-    protected File getTemplateExcelFile(String templateFileName) {
-        try {
-            File file = ResourceUtils.getFile("classpath:excel/" + templateFileName);
-            return file;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+
 }

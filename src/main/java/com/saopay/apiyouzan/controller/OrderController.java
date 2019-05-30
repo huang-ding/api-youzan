@@ -4,6 +4,7 @@ import com.saopay.apiyouzan.data.pojo.dto.OrderDetail;
 import com.saopay.apiyouzan.data.pojo.dto.TradesSoldGetParams;
 import com.saopay.apiyouzan.enums.OrderStatusEnum;
 import com.saopay.apiyouzan.service.OrderService;
+import com.saopay.apiyouzan.util.BaseUtil;
 import com.saopay.apiyouzan.util.DateUtil;
 import com.saopay.apiyouzan.util.file.ExcelExportUtil;
 import com.youzan.open.sdk.gen.v4_0_0.api.YouzanTradesSoldGet;
@@ -81,7 +82,7 @@ public class OrderController extends YouZanBaseController {
         List<OrderDetail> orderDetails = orderService.excelOrderDetail(tradesSold);
 
 //        // 导出文件模板
-        File tempFile = super.getTemplateExcelFile("order.xlsx");
+        File tempFile = BaseUtil.getTemplateExcelFile("order.xlsx");
 //        // 导出文件名称
         String exportFileName = "订单" + DateUtil.nowDateTimeString() + ".xls";
 //

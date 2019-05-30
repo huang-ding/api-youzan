@@ -4,6 +4,7 @@ import com.saopay.apiyouzan.data.dao.jpa.AdminJpaDao;
 import com.saopay.apiyouzan.data.pojo.po.Admin;
 import com.saopay.apiyouzan.enums.RedisKeyEnum;
 import com.saopay.apiyouzan.redis.RedisUtil;
+import com.saopay.apiyouzan.service.youzan.YouZanUserService;
 import com.saopay.apiyouzan.util.http.JsonResult;
 import com.saopay.apiyouzan.util.http.JsonResultErrorEnum;
 import com.saopay.apiyouzan.util.wechat.WeChatBaseUtil;
@@ -11,6 +12,7 @@ import com.youzan.open.sdk.gen.v3_0_1.model.YouzanUsersWeixinFollowerGetResult;
 import com.youzan.open.sdk.gen.v3_0_1.model.YouzanUsersWeixinFollowerGetResult.CrmUserTag;
 import com.youzan.open.sdk.gen.v3_0_1.model.YouzanUsersWeixinFollowerGetResult.CrmWeixinFans;
 import java.time.LocalDateTime;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +28,7 @@ public class AdminService {
     private WeChatBaseUtil weChatBaseUtil;
 
     @Autowired
-    private UserService userService;
+    private YouZanUserService youZanUserService;
 
     @Autowired
     private AdminJpaDao adminJpaDao;
@@ -42,7 +44,7 @@ public class AdminService {
         String openId = weChatBaseUtil.getOpenId(code);
         String tagName = redisUtil.hget(RedisKeyEnum.YZ_VERIFICATION_TAG, openId);
         if (tagName == null) {
-            YouzanUsersWeixinFollowerGetResult youzanUsersWeixinFollowerGetResult = userService
+            YouzanUsersWeixinFollowerGetResult youzanUsersWeixinFollowerGetResult = youZanUserService
                 .getUserInfoByOpenId(openId);
             CrmWeixinFans user = youzanUsersWeixinFollowerGetResult.getUser();
             if (user != null) {
@@ -56,10 +58,13 @@ public class AdminService {
                     StringBuilder tagStr = new StringBuilder();
                     for (CrmUserTag tag : tags) {
                         String name = tag.getName();
-                        tagStr.append(",").append(name);
                         if (tagVerification.equals(name)) {
+                            tagStr.append(",").append(name);
                             flag = true;
                         }
+                    }
+                    if (StringUtils.isBlank(tagStr)) {
+                        return JsonResult.error(JsonResultErrorEnum.YZ_TAG_NULL);
                     }
                     admin.setTags(tagStr.substring(1));
                     Admin oldAdmin = adminJpaDao.findByOpenId(openId);
@@ -67,11 +72,13 @@ public class AdminService {
                         admin.setCreatorTime(LocalDateTime.now());
                         adminJpaDao.save(admin);
                     } else if (!admin.getTags().equals(oldAdmin.getTags())) {
-                        admin.setId(oldAdmin.getId());
-                        adminJpaDao.save(admin);
+                        oldAdmin.setTags(oldAdmin.getTags());
+                        oldAdmin.setUpdateTime(LocalDateTime.now());
+                        adminJpaDao.save(oldAdmin);
                     }
                     if (flag) {
-                        redisUtil.hset(RedisKeyEnum.YZ_VERIFICATION_TAG, openId, tagVerification);
+                        redisUtil
+                            .hset(RedisKeyEnum.YZ_VERIFICATION_TAG, openId, tagVerification, 14400);
                     }
                     if (!flag) {
                         return JsonResult.error(JsonResultErrorEnum.YZ_TAG_NULL);

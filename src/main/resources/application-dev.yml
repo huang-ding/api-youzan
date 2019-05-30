@@ -39,6 +39,21 @@ logging:
     org.springframework.web: DEBUG
 
 
+wechat:
+  #公众号
+  public:
+    kfz_id: gh_451273607345
+    app_id: wx09ee5c62e5b2a134
+    app_secret: 358b0680905ab6a7bf104119e0ac6d27
+    token_url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${wechat.public.app_id}&secret=${wechat.public.app_secret}
+    user_token_url: https://api.weixin.qq.com/sns/oauth2/access_token?appid=${wechat.public.app_id}&secret=${wechat.public.app_secret}&code=$CODE&grant_type=authorization_code
+    jsapi_ticket_url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=$ACCESS_TOKEN&type=jsapi
+    encoding_AES_key: 1L3t3vZuOpKvUbIIj5NIKYgJzbF0eqXT0HbL6YVRr3I
+    token: hd520156
+  #微信模板id
+  template_id:
+    #活动推广通知Id
+    activity_id: d4Di9doKr80Y9dmDIO6lklfcKE8CuWP0p5Brn3Axf9g
 
 
 

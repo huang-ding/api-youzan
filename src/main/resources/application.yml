@@ -1,7 +1,7 @@
 spring:
   profiles:
     #设置配置文件
-    active: @project@
+    active: @profileActive@
   application:
     name: api-youzan
   #设置jackson格式
@@ -33,7 +33,7 @@ spring:
         max-idle: 100
         max-wait: 6ms
 
-environment: @project@
+environment: @profileActive@
 
 mybatis:
   type-aliases-package: com.saopay.apiyouzan.data.pojo.po
@@ -50,12 +50,4 @@ baidu:
   secret_key: NojzXyELY4OBNv4yrQqM2z0cNPjIyfu9
 
 
-wechat:
-  #公众号
-  public:
-    app_id: wx39b6997519883c8f
-    app_secret: 500e64a06fb40b7669d525487bd1fb3c
-    token_url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${wechat.public.app_id}&secret=${wechat.public.app_secret}
-    user_token_url: https://api.weixin.qq.com/sns/oauth2/access_token?appid=${wechat.public.app_id}&secret=${wechat.public.app_secret}&code=$CODE&grant_type=authorization_code
-    jsapi_ticket_url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=$ACCESS_TOKEN&type=jsapi
 

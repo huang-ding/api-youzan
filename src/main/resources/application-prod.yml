@@ -32,7 +32,15 @@ logging:
     org.springframework.web: INFO
 
 
-
+wechat:
+  #公众号
+  public:
+    kfz_id: gh_451273607345
+    app_id: wx39b6997519883c8f
+    app_secret: 500e64a06fb40b7669d525487bd1fb3c
+    token_url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${wechat.public.app_id}&secret=${wechat.public.app_secret}
+    user_token_url: https://api.weixin.qq.com/sns/oauth2/access_token?appid=${wechat.public.app_id}&secret=${wechat.public.app_secret}&code=$CODE&grant_type=authorization_code
+    jsapi_ticket_url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=$ACCESS_TOKEN&type=jsapi
 
 
 
